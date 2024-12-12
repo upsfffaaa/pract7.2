@@ -3,10 +3,10 @@ name: Python Syntax Check
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   syntax-check:
@@ -23,12 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m venv venv  # создаем виртуальное окружение с именем venv
-          source venv/bin/activate  # активируем виртуальное окружение
+          # Проверяем, существует ли .venv, если нет - создаем
+          if [ ! -d ".venv" ]; then
+            python -m venv .venv  # создаем виртуальное окружение
+          fi
+          source .venv/bin/activate  # активируем виртуальное окружение
           pip install --upgrade pip
-          pip install flake8
+          pip install -r requirements.txt || true  # установим зависимости, если файл requirements.txt существует
 
       - name: Check Python syntax
         run: |
-          source venv/bin/activate  # активируем виртуальное окружение
-          flake8 /home/upsfffaaa/PycharmProjects/pythonProject/.venv/d.py
+          source .venv/bin/activate  # активируем виртуальное окружение
+          flake8 .venv/d.py  # проверяем синтаксис файла d.py
