@@ -29,9 +29,10 @@ jobs:
           fi
           source .venv/bin/activate  # активируем виртуальное окружение
           pip install --upgrade pip
-          pip install -r requirements.txt || true  # установим зависимости, если файл requirements.txt существует
+          pip install flake8  # Устанавливаем flake8 для проверки синтаксиса
+          pip install -r requirements.txt || true  # Устанавливаем зависимости из requirements.txt (если файл есть)
 
       - name: Check Python syntax
         run: |
-          source .venv/bin/activate  # активируем виртуальное окружение
-          flake8 .venv/d.py  # проверяем синтаксис файла d.py
+          source .venv/bin/activate  # Активируем виртуальное окружение
+          flake8 /home/upsfffaaa/PycharmProjects/pythonProject/.venv/d.py  # Проверяем синтаксис Python файла
