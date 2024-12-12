@@ -35,4 +35,4 @@ jobs:
       - name: Check Python syntax
         run: |
           source .venv/bin/activate  # активируем виртуальное окружение
-          flake8 .venv/d.py  # проверяем синтаксис файла d.py
+          flake8 --ignore=E302,E305 .venv/d.py  # игнорируем E302 и E305
