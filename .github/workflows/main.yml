@@ -34,5 +34,5 @@ jobs:
 
       - name: Check Python syntax
         run: |
-          source .venv/bin/activate  # Активируем виртуальное окружение
-          flake8 /home/upsfffaaa/PycharmProjects/pythonProject/.venv/d.py  # Проверяем синтаксис Python файла
+          source .venv/bin/activate  # активируем виртуальное окружение
+          flake8 .venv/d.py  # проверяем синтаксис файла d.py
