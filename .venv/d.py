@@ -1,5 +1,6 @@
 import os
 
+
 def print_directory_tree(path, indent=0):
     try:
         # Получаем список файлов и папок в текущей директории
