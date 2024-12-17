@@ -23,16 +23,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          # Проверяем, существует ли .venv, если нет - создаем
           if [ ! -d ".venv" ]; then
-            python -m venv .venv  # создаем виртуальное окружение
+            python -m venv .venv  
           fi
-          source .venv/bin/activate  # активируем виртуальное окружение
+          source .venv/bin/activate  
           pip install --upgrade pip
-          pip install flake8  # Устанавливаем flake8 для проверки синтаксиса
-          pip install -r requirements.txt || true  # Устанавливаем зависимости из requirements.txt (если файл есть)
+          pip install flake8  
+          pip install -r requirements.txt || true 
 
       - name: Check Python syntax
         run: |
-          source .venv/bin/activate  # активируем виртуальное окружение
-          flake8 --max-line-length=79 .venv/d.py || true  # Выполняем проверку, но не завершаем с ошибкой
+          source .venv/bin/activate
+          flake8 --max-line-length=79 .venv/d.py || true
